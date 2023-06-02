@@ -2,9 +2,6 @@ package com.kibernumacademy.devops.controllers;
 
 import com.kibernumacademy.devops.entitys.Student;
 import com.kibernumacademy.devops.services.IStudentService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +13,6 @@ public class StudentController {
 
   private final IStudentService service;
 
-  @Autowired
   public StudentController(IStudentService service) {
     this.service = service;
   }
@@ -79,7 +75,12 @@ public class StudentController {
 }
 
 class StudentNotFoundException extends RuntimeException {
-  public StudentNotFoundException(String message) {
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+public StudentNotFoundException(String message) {
     super(message);
   }
 }
