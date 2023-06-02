@@ -7,11 +7,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Controller
 public class StudentController {
 
   private final IStudentService service;
+  private static final String REDIRECT_STUDENTS = "redirect:/students";
+  private static final Logger logger = LoggerFactory.getLogger(StudentController.class);
+
 
   public StudentController(IStudentService service) {
     this.service = service;
@@ -33,7 +38,7 @@ public class StudentController {
   @PostMapping("/students")
   public String saveStudent(@ModelAttribute("student") Student student) {
     service.saveStudent(student);
-    return "redirect:/students";
+    return REDIRECT_STUDENTS;
   }
 
   @GetMapping("/students/edit/{id}")
@@ -50,7 +55,7 @@ public class StudentController {
   @PostMapping("/students/{id}")
   public String updatedStudent(@PathVariable Long id, @ModelAttribute("student") Student student, Model model ) {
     Optional<Student> optionalStudent = service.getStudentById(id);
-    System.out.println(optionalStudent.isPresent());
+    logger.info("Student present: {}", optionalStudent.isPresent());
     if (!optionalStudent.isPresent()) {
       throw new StudentNotFoundException("No se encontró un estudiante con id: " + id);
     }
@@ -62,13 +67,13 @@ public class StudentController {
     studentExists.setEmail(student.getEmail());
 
     service.updatedStudent(studentExists);
-    return "redirect:/students";
+    return REDIRECT_STUDENTS;
   }
 
   @GetMapping("/students-delete/{id}")
   public String eliminarEstudiante(@PathVariable Long id) {
     service.deleteStudentById(id);
-    return "redirect:/students";
+    return REDIRECT_STUDENTS;
   }
 
 
