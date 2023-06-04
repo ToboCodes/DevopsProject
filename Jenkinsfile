@@ -128,6 +128,6 @@ def sendSlackNotification(String stageName, String currentResult) {
     slackSend (
         channel: '#jenkins-integration',
         color: color,
-        message: "Resultado de build ${env.BUILD_NUMBER} del pipeline ${env.JOB_NAME}\n${currentResult} (${stageName})"
+        message: "Resultado de build ${env.BUILD_NUMBER} del pipeline ${env.JOB_NAME}\n<${env.BUILD_URL}|${currentResult} (${stageName})>"
     )
 }
