@@ -126,6 +126,8 @@ pipeline {
 def sendSlackNotification(String stageName, String currentResult) {
     def color = currentResult == 'SUCCESS' ? 'good' : 'danger'
     slackSend (
-        channel: '#integracion-de-slack-a-jenkins',
+        channel: '#jenkins-integration',
         color: color,
-        message: "*${currentResult} (${stageName}): Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}
+        message: "${currentResult} (${stageName}): Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}"
+    )
+}
