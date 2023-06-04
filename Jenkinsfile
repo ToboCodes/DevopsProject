@@ -113,7 +113,7 @@ pipeline {
             
             post {
                 success {
-                    sendSlackNotification("Pipeline", currentBuild.currentResult)
+                    sendSlackNotification("Pipeline ejecutado correctamente", currentBuild.currentResult)
                 }
                 failure {
                     sendSlackNotification("Quality Gate", currentBuild.currentResult)
@@ -128,6 +128,6 @@ def sendSlackNotification(String stageName, String currentResult) {
     slackSend (
         channel: '#jenkins-integration',
         color: color,
-        message: "${currentResult} (${stageName}): Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}"
+        message: "Resultado de build ${env.BUILD_NUMBER} del pipeline ${env.JOB_NAME}\n${currentResult} (${stageName})"
     )
 }
