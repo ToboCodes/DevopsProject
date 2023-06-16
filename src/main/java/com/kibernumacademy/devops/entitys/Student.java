@@ -2,9 +2,13 @@ package com.kibernumacademy.devops.entitys;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Table(name = "students")
-public class Student {
+public class Student  {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
