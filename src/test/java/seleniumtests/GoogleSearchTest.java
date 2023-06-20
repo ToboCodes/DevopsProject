@@ -20,6 +20,7 @@ public class GoogleSearchTest {
         options.addArguments("--headless");
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--remote-allow-origins=*");
 
         WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver(options);
