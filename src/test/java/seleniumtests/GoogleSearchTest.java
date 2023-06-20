@@ -10,6 +10,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class GoogleSearchTest {
 
@@ -18,6 +19,7 @@ public class GoogleSearchTest {
     	ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless");
 
+        WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver(options);
 
         // Go to the Google home page
