@@ -11,14 +11,14 @@ pipeline {
             steps {
                 checkout([
                     $class: 'GitSCM', 
-                    branches: [[name: 'main']],
+                    branches: [[name: 'fix/SonarFixes']],
                     userRemoteConfigs: [[url: 'git@github.com:ToboCodes/DevopsProject.git']]
                 ])
             }
 
             post {
                 failure {
-                    sendSlackNotification("Quality Gate", currentBuild.currentResult)
+                    sendSlackNotification("Checkout", currentBuild.currentResult)
                 }
             }
         }
@@ -30,7 +30,7 @@ pipeline {
             
             post {
                 failure {
-                    sendSlackNotification("Quality Gate", currentBuild.currentResult)
+                    sendSlackNotification("Build", currentBuild.currentResult)
                 }
             }
         }
@@ -42,7 +42,7 @@ pipeline {
             
             post {
                 failure {
-                    sendSlackNotification("Quality Gate", currentBuild.currentResult)
+                    sendSlackNotification("Archive", currentBuild.currentResult)
                 }
             }
         }
@@ -55,7 +55,7 @@ pipeline {
             
             post {
                 failure {
-                    sendSlackNotification("Quality Gate", currentBuild.currentResult)
+                    sendSlackNotification("Test", currentBuild.currentResult)
                 }
             }
         }
@@ -69,7 +69,7 @@ pipeline {
             
             post {
                 failure {
-                    sendSlackNotification("Quality Gate", currentBuild.currentResult)
+                    sendSlackNotification("Sonar Scanner", currentBuild.currentResult)
                 }
             }
         }
@@ -116,7 +116,7 @@ pipeline {
                     sendSlackNotification("Pipeline ejecutado correctamente", currentBuild.currentResult)
                 }
                 failure {
-                    sendSlackNotification("Quality Gate", currentBuild.currentResult)
+                    sendSlackNotification("Nexus Upload", currentBuild.currentResult)
                 }
             }
         }
