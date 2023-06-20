@@ -16,8 +16,10 @@ public class GoogleSearchTest {
 
     @Test
     public void googleSearch() {
-    	ChromeOptions options = new ChromeOptions();
+        ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
 
         WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver(options);
