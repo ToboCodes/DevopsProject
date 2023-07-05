@@ -59,5 +59,24 @@ public class StudentServiceImplTest {
     verify(repository).findAll();
   }
 
-  // De forma similar, puedes escribir pruebas para deleteStudentById y updatedStudent.
+  @Test
+  public void shouldDeleteStudentById() {
+    Student student = new Student("James", "Gosling", "james@gmail.com");
+    student.setId(1L);
+    when(repository.findById(any(Long.class))).thenReturn(Optional.of(student));
+
+    studentService.deleteStudentById(1L);
+    verify(repository).deleteById(eq(1L));
+  }
+
+  @Test
+  public void shouldUpdateStudent() {
+    Student student = new Student("James", "Gosling", "james@gmail.com");
+    student.setId(1L);
+    when(repository.findById(any(Long.class))).thenReturn(Optional.of(student));
+
+    studentService.updatedStudent(student);
+    verify(repository).save(eq(student));
+  }
+  
 }
