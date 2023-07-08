@@ -8,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Optional;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
@@ -18,6 +19,7 @@ class DevopsApplicationTests {
 
     @Test
     void contextLoads() {
+      assertNotNull(repository);
     }
 
     @Test
