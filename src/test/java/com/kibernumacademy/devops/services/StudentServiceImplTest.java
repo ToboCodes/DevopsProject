@@ -15,7 +15,7 @@ import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-public class StudentServiceImplTest {
+class StudentServiceImplTest {
 
   private StudentServiceImpl studentService; // La clase que vamos a probar
 
@@ -29,7 +29,7 @@ public class StudentServiceImplTest {
   }
 
   @Test // Indica que este método es una prueba
-  public void shouldSaveStudent() {
+  void shouldSaveStudent() {
     // Crear el estudiante
     Student student = new Student("James", "Gosling", "jgosling@example.com");
     // Cuando save se llame en el repositorio, retorna el estudiante
@@ -40,7 +40,7 @@ public class StudentServiceImplTest {
   }
 
   @Test
-  public void shouldFindStudentById() {
+  void shouldFindStudentById() {
     Student student = new Student("James", "Gosling", "jgosling@example.com");
     student.setId(1L);
     when(repository.findById(any(Long.class))).thenReturn(Optional.of(student));
@@ -50,7 +50,7 @@ public class StudentServiceImplTest {
   }
 
   @Test
-  public void shouldListAllStudents() {
+  void shouldListAllStudents() {
     Student student1 = new Student("James", "Gosling", "jgosling@example.com");
     Student student2 = new Student("Richard", "Stallman", "rstallman@example.com");
     when(repository.findAll()).thenReturn(Arrays.asList(student1, student2));
@@ -60,7 +60,7 @@ public class StudentServiceImplTest {
   }
 
   @Test
-  public void shouldDeleteStudentById() {
+  void shouldDeleteStudentById() {
     Student student = new Student("James", "Gosling", "james@gmail.com");
     student.setId(1L);
     when(repository.findById(any(Long.class))).thenReturn(Optional.of(student));
@@ -70,7 +70,7 @@ public class StudentServiceImplTest {
   }
 
   @Test
-  public void shouldUpdateStudent() {
+  void shouldUpdateStudent() {
     Student student = new Student("James", "Gosling", "james@gmail.com");
     student.setId(1L);
     when(repository.findById(any(Long.class))).thenReturn(Optional.of(student));
