@@ -36,7 +36,7 @@ class StudentServiceImplTest {
     when(repository.save(any(Student.class))).thenReturn(student);
 
     studentService.saveStudent(student); // Llamada al método a probar
-    verify(repository).save(eq(student)); // Verifica si save fue llamado con el estudiante correcto
+    verify(repository).save(student); // Verifica si save fue llamado con el estudiante correcto
   }
 
   @Test
@@ -46,7 +46,7 @@ class StudentServiceImplTest {
     when(repository.findById(any(Long.class))).thenReturn(Optional.of(student));
 
     studentService.getStudentById(1L);
-    verify(repository).findById(eq(1L));
+    verify(repository).findById(1L);
   }
 
   @Test
@@ -66,7 +66,7 @@ class StudentServiceImplTest {
     when(repository.findById(any(Long.class))).thenReturn(Optional.of(student));
 
     studentService.deleteStudentById(1L);
-    verify(repository).deleteById(eq(1L));
+    verify(repository).deleteById(1L);
   }
 
   @Test
@@ -76,7 +76,7 @@ class StudentServiceImplTest {
     when(repository.findById(any(Long.class))).thenReturn(Optional.of(student));
 
     studentService.updatedStudent(student);
-    verify(repository).save(eq(student));
+    verify(repository).save(student);
   }
   
 }
