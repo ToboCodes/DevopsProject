@@ -25,10 +25,9 @@ class DevopsApplicationTests {
     }
 
     @Test
-    void main_startsSpringApplication_withoutErrors() {
-      ConfigurableApplicationContext context = SpringApplication.run(DevopsApplication.class);
-      assertNotNull(context);
-  }
+    void main_startsSpringBootApplication() {
+      DevopsApplication.main(new String[] {});
+    }
 
     @Test
     void testRepositorySavesStudents() {
