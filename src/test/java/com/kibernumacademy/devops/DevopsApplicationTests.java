@@ -4,7 +4,9 @@ import com.kibernumacademy.devops.entitys.Student;
 import com.kibernumacademy.devops.repositories.IStudentRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.ConfigurableApplicationContext;
 
 import java.util.Optional;
 
@@ -21,6 +23,12 @@ class DevopsApplicationTests {
     void contextLoads() {
       assertNotNull(repository);
     }
+
+    @Test
+    void main_startsSpringApplication_withoutErrors() {
+      ConfigurableApplicationContext context = SpringApplication.run(DevopsApplication.class);
+      assertNotNull(context);
+  }
 
     @Test
     void testRepositorySavesStudents() {
