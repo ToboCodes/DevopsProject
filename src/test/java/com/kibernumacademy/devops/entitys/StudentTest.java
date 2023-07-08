@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class StudentTest {
+class StudentTest {
 
   private Student student; // Objeto de la clase que vamos a probar
 
@@ -15,19 +15,19 @@ public class StudentTest {
   }
 
   @Test // Indica que este método es una prueba
-  public void shouldSetName() {
+  void shouldSetName() {
     student.setName("Richard"); // Cambiamos el nombre
     assertEquals("Richard", student.getName()); // Comprobamos que el cambio se realizó correctamente
   }
 
   @Test
-  public void shouldSetLastname() {
+  void shouldSetLastname() {
     student.setLastname("Stallman"); // Cambiamos el apellido
     assertEquals("Stallman", student.getLastname()); // Comprobamos que el cambio se realizó correctamente
   }
 
   @Test
-  public void shouldSetEmail() {
+  void shouldSetEmail() {
     student.setEmail("rstallman@example.com"); // Cambiamos el email
     assertEquals("rstallman@example.com", student.getEmail()); // Comprobamos que el cambio se realizó correctamente
   }
