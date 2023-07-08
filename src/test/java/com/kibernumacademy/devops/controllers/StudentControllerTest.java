@@ -18,7 +18,7 @@ class StudentControllerTest {
     private MockMvc mockMvc;
 
     @Test
-    public void testGetStudents() throws Exception {
+    void testGetStudents() throws Exception {
         mockMvc.perform(get("/students").with(httpBasic("userdevops", "devops")))
             .andExpect(status().isOk())
             .andExpect(view().name("students"));
