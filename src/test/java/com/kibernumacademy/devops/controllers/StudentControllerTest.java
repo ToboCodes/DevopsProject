@@ -13,11 +13,13 @@ import org.springframework.http.MediaType;
 import java.util.Optional;
 import org.springframework.test.web.servlet.request.RequestPostProcessor;
 
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.*;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.httpBasic;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -54,7 +56,6 @@ class StudentControllerTest {
 
     @Test
     void testSaveStudent() throws Exception {
-        Student student = new Student();
         mockMvc.perform(post("/students")
             .with(authenticate())
             .contentType(MediaType.APPLICATION_FORM_URLENCODED)
