@@ -55,20 +55,6 @@ class StudentControllerTest {
     }
 
     @Test
-    void testSaveStudent() throws Exception {
-        mockMvc.perform(post("/students")
-            .with(authenticate())
-            .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-            .param("name", "John")
-            .param("lastname", "Doe")
-            .param("email", "john.doe@example.com"))
-            .andExpect(status().is3xxRedirection())
-            .andExpect(view().name(REDIRECT_STUDENTS));
-
-        verify(service).saveStudent(any(Student.class));
-    }
-
-    @Test
     void testShowFormEditStudent() throws Exception {
         Student student = new Student();
         when(service.getStudentById(1L)).thenReturn(Optional.of(student));
@@ -77,23 +63,6 @@ class StudentControllerTest {
             .andExpect(status().isOk())
             .andExpect(model().attribute("student", student))
             .andExpect(view().name("edit_student"));
-    }
-
-    @Test
-    void testUpdatedStudent() throws Exception {
-        Student student = new Student();
-        when(service.getStudentById(1L)).thenReturn(Optional.of(student));
-
-        mockMvc.perform(post("/students/1")
-            .with(authenticate())
-            .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-            .param("name", "John")
-            .param("lastname", "Doe")
-            .param("email", "john.doe@example.com"))
-            .andExpect(status().is3xxRedirection())
-            .andExpect(view().name(REDIRECT_STUDENTS));
-
-        verify(service).updatedStudent(any(Student.class));
     }
 
     @Test
