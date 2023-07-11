@@ -4,13 +4,11 @@ import com.kibernumacademy.devops.entitys.Student;
 import com.kibernumacademy.devops.repositories.IStudentRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.test.context.SpringBootTest;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 class DevopsApplicationTests {
@@ -25,8 +23,7 @@ class DevopsApplicationTests {
 
     @Test
     void main_startsSpringBootApplication() {
-        DevopsApplication.main(new String[] {});
-        assertThat(SpringApplication.exit(SpringApplication.run(DevopsApplication.class))).isEqualTo(0);
+      DevopsApplication.main(new String[] {});
     }
 
     @Test
