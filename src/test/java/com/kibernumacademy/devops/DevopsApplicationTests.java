@@ -6,12 +6,11 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.ConfigurableApplicationContext;
-
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 class DevopsApplicationTests {
@@ -26,7 +25,8 @@ class DevopsApplicationTests {
 
     @Test
     void main_startsSpringBootApplication() {
-      DevopsApplication.main(new String[] {});
+        DevopsApplication.main(new String[] {});
+        assertThat(SpringApplication.exit(SpringApplication.run(DevopsApplication.class))).isEqualTo(0);
     }
 
     @Test
